@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
-import { Search, MapPin, Calendar, Users, Cloud, Menu, LogIn } from 'lucide-react';
-
-const WeatherWidget = ({ temperature = "24°C", condition = "Sunny" }) => (
-  <div className="flex items-center gap-2 text-sm">
-    <Cloud className="w-4 h-4" />
-    <span>{temperature}</span>
-    <span>{condition}</span>
-  </div>
-);
+import { useNavigate } from 'react-router-dom';
+import { Search, MapPin, Calendar, Users, Cloud, Menu } from 'lucide-react';
 
 const Header = () => {
+  const navigate = useNavigate();
   const [destination, setDestination] = useState('');
   const [dates, setDates] = useState('');
   const [travelers, setTravelers] = useState('');
@@ -34,11 +28,22 @@ const Header = () => {
           </div>
           
           <div className="flex items-center gap-4">
-            <WeatherWidget />
+            <button 
+              onClick={() => navigate('/weather')}
+              className="flex items-center gap-2 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+            >
+              <Cloud className="w-4 h-4" />
+              Check Weather
+            </button>
             <button className="px-4 py-2 text-white bg-orange-500 rounded-lg hover:bg-orange-600">
               Add Listing
             </button>
-            <LogIn className="w-6 h-6 text-gray-600" />
+            <button 
+              className="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700" 
+              onClick={() => navigate('/register')}
+            >
+              Login
+            </button>
           </div>
         </div>
       </nav>

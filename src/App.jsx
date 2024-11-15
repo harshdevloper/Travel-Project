@@ -1,25 +1,31 @@
-import { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
-import Home from '../src/component/Home/Home'; // Import the Home component
-import Header from '../src/component/Header/Header'; // Import the Header component
-import Footer from '../src/component/Footer/Footer'; // Import the Footer component
+import Header from './component/Header/Header';
+import Register from './component/Form/Register';
+import Home from './component/Home/Home';
+import Footer from './component/Footer/Footer';
+import SignupPage from './component/Form/Signup';
+import WeatherDashboard from './component/Weather/WeatherDahboard';
+import RestaurantPage from './component/Restaurant/RestaurantPage';
 
 function App() {
-    return (
-        <>
-            <Router>
-                <Header />
-
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                </Routes>
-
-                <Footer />
-            </Router>
-        </>
-    );
+  return (
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/weather" element={<WeatherDashboard />} />
+          <Route path="/restaurant" element={<RestaurantPage />} />
+        </Routes>
+        
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
 export default App;
-
